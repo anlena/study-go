@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="container" style="min-width:400px;height:400px;"></div>
+</body>
+<script src="js/jQuery-1.8.3.min.js"></script>
+<script src="js/highcharts.js"></script>
+<!--<script src="js/hightcharts-more.js"></script>
+<script src="js/exporting.js"></script>
+<script src="js/highcharts-zh_CN.js"></script>-->
+<script>
+    var charts = new Highcharts.Chart('container', {
+
+        //标题
+        title: {
+            useHTML: 'true',
+            text: "中文网 | <a href='www.baidu.com'>中文教程</a>",
+            align: 'center',
+            verticalAlign: '',
+            floatiog: false,
+            margin: 15,
+            x: 0,
+            y: 10,
+            style: {
+                color: 'red',
+                fontFamily: 'yahei',
+                fontSize: '16px',
+                fontWeight: 'bold'
+            }
+        },
+
+        //副标题
+        subtitle: {
+            text: "我是副标题"
+        },
+
+        //x轴
+        xAxis: {
+            title: {
+                text: 'x轴标题'
+            }
+        },
+
+        //y轴
+        yAxis: {
+            title: {
+                text: 'y轴标题'
+            }
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .d1 {
+            width: 200px;
+            height: 200px;
+            background: green;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .d2 {
+            width: 200px;
+            height: 200px;
+            z-index: 1;
+            position: absolute;
+        }
+        
+        .d2:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 100%;
+            background: red;
+            z-index: -2;
+            transition: all 0.5S linear;
+        }
+        
+        .d2:hover:before {
+            top: 0%
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="d1">
+        <div class="d2">给我一个渐变的效果</div>
+    </div>
+</body>
+
+</html>
