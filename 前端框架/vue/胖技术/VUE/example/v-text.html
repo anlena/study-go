@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>HelloWorld</title>
+    <title>v-text&v-html</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="../assets/js/vue.js">
@@ -10,30 +10,24 @@
 </head>
 
 <body>
-    <h1>v-for实例</h1>
+    <h1>v-text&v-html</h1>
     <hr>
     <div id="app">
-        <ul>
-            <li v-for="item in items">{{item}}</li>
-        </ul>
+        <!--区别，数据请求不到会显示message-->
+        <span>{{message}}</span>=<span v-text="message"></span><br>
+        <span>{{dodo}}</span>
+        <!--下面这种不安全-->
+        <span v-html="dodo"></span>
     </div>
 
     <script type="text/javascript">
         var app = new Vue({
             el: '#app',
             data: {
-                items: [12, 42, 13, 99, 22, 36, 12]
-            },
-            computed: {
-                sortItems: function() {
-                    return this.items.sort(sortNumber);
-                }
+                message: 'hello world!',
+                dodo: '<h2>hello world!</h2>'
             }
         });
-
-        function sortNumber(a, b) {
-            return a - b
-        }
     </script>
 </body>
 
