@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>vue-directive自定义指令</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js">
+    </script>
+</head>
+
+<body>
+    <h1>vue-directive自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-xiao="color">{{num}}</div>
+        <button @click="add">ADD</button>
+        <div v-wei="yanse">{{num}}</div>
+    </div>
+
+    <script type="text/javascript">
+        //1.自定义指令
+        Vue.directive("xiao", function(el, binding) {
+            // // 元素
+            // console.log(el);
+            // // 自定义指令的值
+            // console.log(binding);
+            // console.log(binding.name);
+            // console.log(binding.value);
+            // console.log(binding.expression);
+            el.style = "color:" + binding.value;
+        });
+        //2.钩子函数
+        Vue.directive('wei', {
+            bind: function() { //被绑定
+                console.log('1-bind');
+            },
+            inserted: function() {
+                console.log('2-inserted');
+            },
+            update: function() {
+                console.log('3-update');
+            },
+            componentUpdated: function() {
+                console.log('4-compontUpdated');
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                color: 'red',
+                yanse: 'blue'
+            },
+            methods: {
+                add: function() {
+                    this.num++
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

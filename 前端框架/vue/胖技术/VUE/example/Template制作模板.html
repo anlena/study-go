@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Template制作模板</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js">
+    </script>
+</head>
+
+<body>
+    <h1>Template制作模板</h1>
+    <hr>
+    <div id="app">
+        {{message}}
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world!'
+            },
+            template: `<h1 style="color:red">我是选项模板</h1>`
+        });
+    </script>
+</body>
+
+</html>
