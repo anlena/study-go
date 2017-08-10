@@ -35,14 +35,17 @@
             bind: function() { //被绑定
                 console.log('1-bind');
             },
-            inserted: function() {
+            inserted: function() { //绑定到节点
                 console.log('2-inserted');
             },
-            update: function() {
+            update: function() { //组件更新
                 console.log('3-update');
             },
-            componentUpdated: function() {
-                console.log('4-compontUpdated');
+            componentUpdated: function() { //组件更新完成
+                console.log('4 - compontUpdated');
+            },
+            unbind: function() { //解绑
+                console.log('1 - bind');
             }
         })
 

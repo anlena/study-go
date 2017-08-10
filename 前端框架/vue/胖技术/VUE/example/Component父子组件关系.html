@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>父子组件关系</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js">
+    </script>
+</head>
+
+<body>
+    <h1>父子组件关系</h1>
+    <hr>
+    <div id="app">
+        <erxiaoha></erxiaoha>
+    </div>
+
+    <script type="text/javascript">
+        var city = {
+            template: '<div>Sichuan of China</div>'
+        }
+        var erxiaoha = {
+            template: '<div><p> Panda from China!</p><city></city></div>',
+            components: {
+                "city": city
+            }
+        }
+        var app = new Vue({
+            el: '#app',
+            components: {
+                "erxiaoha": erxiaoha
+            },
+            data: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

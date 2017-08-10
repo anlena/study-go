@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>component初始组件</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js">
+    </script>
+</head>
+
+<body>
+    <h1>component</h1>
+    <hr>
+    <div id="app">
+        <jspang></jspang>
+        <erxiaoha></erxiaoha>
+    </div>
+</body>
+<script>
+    // 全局注册组件
+    Vue.component('jspang', {
+        template: '<div style="color:red">全局注册化的jspang标签<div/>'
+    })
+    var app = new Vue({
+        el: '#app',
+        components: {
+            "erxiaoha": {
+                template: '<div style="color:blue;">这个是局部注册的标签</div>'
+            }
+        },
+        data: {
+
+        }
+    })
+</script>
+
+</html>

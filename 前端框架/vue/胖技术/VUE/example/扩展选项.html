@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Extends Optin Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js">
+    </script>
+</head>
+
+<body>
+    <h1>Extends Optin Demo</h1>
+    <hr>
+    <div id="app">
+        1.{{message}} 2.[[message]]
+
+        <p><button @click="add">add</button></p>
+    </div>
+
+    <script type="text/javascript">
+        var bbb = {
+            created: function() {
+                console.log("我是被扩展出来的");
+            },
+            methods: {
+                add: function() {
+                    console.log("我是被扩展出来的方法");
+                }
+            }
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world!'
+            },
+            methods: {
+                add: function() {
+                    console.log("我是原生方法");
+                }
+            },
+            delimiters: ['[[', ']]'],
+            extends: bbb
+        });
+    </script>
+</body>
+
+</html>

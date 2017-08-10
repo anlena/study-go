@@ -16,6 +16,16 @@
         {{message}}
     </div>
 
+    <!--写在template里的模板  -->
+    <template id="demo2">
+        <h2 style="color:red">我是template标签模板</h2>
+    </template>
+
+    <!--写在script里的模板  -->
+    <script type="x-template" id="demo3">
+        <h2 style="color:red">我是script标签模板</h2>
+    </script>
+
     <script type="text/javascript">
         var app = new Vue({
             el: '#app',

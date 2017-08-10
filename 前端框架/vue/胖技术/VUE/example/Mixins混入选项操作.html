@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mixins Option Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js">
+    </script>
+</head>
+
+<body>
+    <h1>Mixins Option Demo</h1>
+    <hr>
+    <div id="app">
+        <p>num:{{num}}</p>
+        <p><button @click="add">增加数量</button></p>
+    </div>
+
+    <script type="text/javascript">
+        //额外临时假如时，用于显示日志
+        var addLog = {
+            // updated: function() {
+            //     console.log("数据发生变化，变化成" + this.num + "")
+            // }
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 1
+            },
+            methods: {
+                add: function() {
+                    this.num++;
+                }
+            },
+            mixins: []
+        });
+
+        // 全局混入
+        Vue.mixin({
+            updated: function() {
+                console.log('我是全局被混入的');
+            }
+        })
+    </script>
+</body>
+
+</html>

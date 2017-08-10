@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HelloWorld</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js">
+    </script>
+</head>
+
+<body>
+    <h1>methods Option</h1>
+    <hr>
+    <div id="app">
+        {{ a }}
+        <p><button @click="add(2,$event)">add</button></p>
+        <p>
+            <btn @click.native="add(4)"></btn>
+        </p>
+    </div>
+    <!--外部  -->
+    <button onclick="app.add(4)">外部调用构造器里的方法</button>
+
+
+    <script type="text/javascript">
+        var btn = {
+            template: '<button>组件reduce</button>'
+        }
+        var app = new Vue({
+            el: '#app',
+            components: {
+                "btn": btn
+            },
+            data: {
+                a: 1
+            },
+            methods: {
+                add: function(num, ev) {
+                    console.log(ev)
+                    if (num != '') {
+                        this.a += num
+                    } else {
+                        this.a++
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
