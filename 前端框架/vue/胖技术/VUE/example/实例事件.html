@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>实例事件</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js">
+    </script>
+</head>
+
+<body>
+    <h1>实例事件</h1>
+    <hr>
+    <div id="app">
+        {{message}}
+        <p><button @click="add">增加</button></p>
+        <p><button @click="reduce">减少</button></p>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 1
+            },
+            methods: {
+                add: function() {
+                    this.message++
+                }
+            }
+        });
+        app.$on('reduce', function() {
+            console.log("123123")
+            this.message--;
+        })
+    </script>
+</body>
+
+</html>
