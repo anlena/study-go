@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>    
+</head>
+<body>
+    <div id="app">
+        <h1 v-if="isShow">值为真时，显示</h1>
+        <p v-if="!isShow">否则不显示</p>
+        <hr>
+        <p v-if="Math.random() > 0.5">now you see me</p>
+        <p v-else>now you don't see</p>
+        <hr>
+        <p v-if="type=='A'">A</p>
+        <p v-else-if="type==='B'">B</p>
+        <p v-else-if="type==='C'">C</p>
+        <p v-else>NO</p>
+        <hr>
+        <p v-shwo="have">v-show渲染到DOM了，只是显示不显示，(注意，v-show 不支持 <template> 语法，也不支持 v-else。)</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                isShow:true,
+                type:'B',
+                have:true
+            }
+        })
+    </script>
+</body>
+</html>
