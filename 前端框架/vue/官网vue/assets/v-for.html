@@ -28,19 +28,37 @@
         <ul>
             <li v-for="(value,key) in object">{{key}}:{{value}}</li>
         </ul>
+        <hr>
         <h4>第三个参数为索引值</h4>
         <ul>
             <li v-for="(value,key,index) in object">
                 {{index}}:{{key}}:{{value}}
             </li>
         </ul>
+        <hr>
         <h4>记得给v-for提供key值</h4>
         <div v-text="str"></div>
+        <hr>
+        <h4>显示过滤排序结果</h4>
+        <ul>
+            <li v-for="n in eventNumbers">{{n}}</li>
+        </ul>
+        <hr>
+        <h4>或者method</h4>
+        <ul>
+            <li v-for="n in even(numbers)"></li>
+        </ul>
+        <hr>
+        <h4>一段取值范围的v-for</h4>
+        <ul>
+            <li v-for="n in 10">{{n}}</li>
+        </ul>
     </div>
     <script>
         var app = new Vue({
             el:"#app",
             data:{
+                numbers:[1,2,3,4,5],
                 parentMessage:"Parent",
                 items:[
                     {message:'FOO'},
@@ -52,6 +70,20 @@
                     age:30
                 },
                 str:'<div v-for="item in items" :key="item.id"><!-- 内容 --></div>'
+            },
+            methods:{
+                even:function(numbers){
+                    return numbers.filter(function(number){
+                        return number % 2 === 0
+                    })
+                }
+            },
+            computed:{
+                eventNumbers:function(){
+                    return this.numbers.filter(function(number){
+                        return number % 2 === 0
+                    })
+                }
             }
         })
     </script>
