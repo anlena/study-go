@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>    
+</head>
+<body>
+    <h4>行内指令</h4>
+    <div id="example-1">
+        <button v-on:click="counter += 1">增加</button>
+        <p>这个按钮被点击了{{counter}}</p>
+    </div>
+    <hr>
+    <h4>方法事件处理</h4>
+    <div id="example-2">
+        <button v-on:click="greet">Greet</button>
+    </div>
+    <p>也可以用js直接调用，example2.greet()</p>
+    <hr>
+    <h4>内联处理</h4>
+    <div id="example-3">
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click="say('what')">Say what</button>
+    </div>
+    <hr>
+    <h4>行内传递事件对象$event</h4>
+    <div id="example-4">
+        <button v-on:click="warn('提交我吧',$event)">提交</button>
+    </div>
+    <hr>
+    <h4>事件修饰符</h4>
+    <p>阻止事件冒泡："<"a v-on:click.stop='doThis'">""<"/a">"</p>
+    <p>提交页面不再重载页面："<"form v-on:submit.prevent='onSubmit'">""<"/form">"</p>
+    <p>修饰符可以串联："<"a v-on:click.stop.prevent='doWhat'">""<"/a">"</p>
+    <p>只有修饰符："<"form v-on:submit.pevent">""<"/form">"</p>
+    <p>添加事件侦听器时使用事件捕获模式："<"a v-on:click.capture='doThis'">""<"/a">"</p>
+    <p>只当事件在该元素本身(比如不是子元素)触发时触发回调："<"a v-on:click.self='doThis'">""<"/a">"</p>
+    <p>点击事件只会触发一次："<"a v-on:click.once='doThis'">""<"/a">"</p>
+    <hr>
+    <h4>键值修饰符</h4>
+    <p>键值： "<"input v-on:keyup.13="submit"">"</p>
+    <p>键值别名："<"input v-on:keyup.enter="submit"">"</p>
+    <p>别名还有：enter、tab、delete、esc、space、up、down、left、right</p>
+    <p>可以通过全局变量来自定义：Vue.config.keyCodes.f1 = 112</p>
+    <script>
+        var example1 = new Vue({
+            el:"#example-1",
+            data:{
+                counter:0
+            }
+        });
+
+        var example2 = new Vue({
+            el:"#example-2",
+            data:{
+                name:"二小哈"
+            },
+            methods:{
+                greet:function(event){
+                    alert(this.name + 'Hello!')
+                    if(event){
+                        alert(event.target.tagName)
+                    }
+                }
+            }
+        })
+
+        var example3 = new Vue({
+            el:"#example-3",
+            methods:{
+                say:function(message){
+                    alert(message)
+                }
+            }
+        })
+
+        var example4 = new Vue({
+            el:"#example-4",
+            methods:{
+                warn:function(message,event){
+                    if(event) event.preventDefault();
+                    alert(message);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

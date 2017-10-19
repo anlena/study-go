@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>    
+</head>
+<body>
+    <h4>文本</h4>
+    <div id="example-1">
+        <input v-model="message">
+        <p>message is :{{message}}</p>
+    </div>
+    <hr>
+    <h4>多行文本</h4>
+    <div id="example-2">
+        <span>内容是</span>
+        <p style="white-space:pre-line">{{message}}</p>
+        <br>
+        <textarea v-model="message"></textarea>
+    </div>
+    <hr>
+    <h4>单个复选框</h4>
+    <div id="example-3">
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+    </div>
+    <hr>
+    <h4>多个复选框</h4>
+    <div id="example-4">
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+    </div>
+    <hr>
+    <h4>单选按钮</h4>
+    <div id="example-5">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+    </div>
+    <hr>
+    <h4>选择列表</h4>
+    <div id="example-6">
+        <select multiple v-model="selected">
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>Selected:{{selected}}</span>
+    </div>
+    <hr>
+    <h4>值绑定</h4>
+    <div id="example-7">
+        <input type="radio" v-model="picked" value="a">
+        <input type="checkbox" v-model="toggle">
+        <select v-model="selected">
+            <option value="bac">ADA</option>
+        </select>
+    </div>
+    <hr>
+    <h4>修饰符</h4>
+    <p>v-model.lazy:在change事件中同步</p>
+    <p>v-model.number:将输入值转换为number</p>
+    <p>v-model.trim:去掉首尾空格</p>
+    <script>
+        var example1 = new Vue({
+            el:"#example-1",
+            data:{
+                message:'Hello Vue!'
+            }
+        })
+
+        var example2 = new Vue({
+            el:"#example-2",
+            data:{
+                message:'Hello Vue!'
+            }
+        })
+
+        var example3 = new Vue({
+            el:"#example-3",
+            data:{
+                checked:true
+            }
+        })
+
+        var example4 = new Vue({
+            el:"#example-4",
+            data:{
+                checkedNames:[]
+            }
+        })
+
+        var example5 = new Vue({
+            el:"#example-5",
+            data:{
+                picked:''
+            }
+        })
+
+        var example6 = new Vue({
+            el:"#example-6",
+            data:{
+                selected:''
+            }
+        })
+
+        var example7 = new Vue({
+            el:"#example-7",
+            data:{
+                picked:'a',
+                toggle:true,
+                selected:'bac'
+            }
+        })
+    </script>
+</body>
+</html>
