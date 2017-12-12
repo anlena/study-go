@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>h5自定义属性</title>
+</head>
+<body>
+  <a href="http://www.jianshu.com/p/22bdc1a23c87">原文链接</a>
+  <!-- 方式1 -->
+  <h1 user-defined-attribute="share">思维转换</h1>
+  <!-- 方式2 -->
+  <h1 data-share="true">思维转变</h1>
+</body>
+<script>
+  // 方式1获取自定义属性
+  document.getElementsByTagName("h1")[0].getAttribute("user-defined-attribute")
+
+  // 方式2获取自定义属性
+  var myDiv = document.getElementsByTagName("h1")[0];
+  var theValue = myDiv.dataset;
+
+  document.getElementsByTagName("h1")[0].dataset.share;
+  document.getElementsByTagName("h1")[0].dataset["share"];
+
+  //删除一个data属性
+  delete myDiv.dataset.share
+  // 增加一个data属性
+  myDiv.dataset.happy = "OK"
+
+  //dataset兼容性处理
+  if(myDiv.dataset){
+    myDiv.dataset.sad = "false";
+    var thevalue = myDiv.dataset.sad;
+  }else{
+    myDiv.setAttribute("data-attribute","sad");
+    var theValue = myDiv.getAttribute("data-attribute"); // 获取自定义属性
+  }
+</script>
+</html>
