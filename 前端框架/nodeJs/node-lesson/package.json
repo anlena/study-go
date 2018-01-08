@@ -1,0 +1,22 @@
+{
+  "name": "lesson",
+  "version": "1.0.0",
+  "description": "[node-lesson](https://github.com/alsotang/node-lessons/blob/master)",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^2.6.0",
+    "cheerio": "^1.0.0-rc.2",
+    "eventproxy": "^1.0.0",
+    "express": "^4.16.2",
+    "istanbul": "^0.4.5",
+    "should": "^13.2.0",
+    "superagent": "^3.8.2",
+    "utility": "^1.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
