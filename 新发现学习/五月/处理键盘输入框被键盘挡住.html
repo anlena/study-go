@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>canvas 粒子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="app">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li v-on:click="say('hello!', $event)">点击当前行文本</li>
+    <li>li2</li>
+    <li>li3</li>
+    <input type="text" v-on:click="fn('hello!', $event)">
+    <input id="hello" type="text" placeholder="1q2312">
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+    <li>3</li>
+  </ul>
+
+
+  <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+  <!-- <script>
+      "use strict";
+
+      var myClosure = (function outerFunction(){
+        var hidden = 1;
+        return{
+          inc:function innerFunction(){
+            return hidden++;
+          }
+        }
+      }());
+
+      console.log(myClosure.inc());  // 返回 1
+      console.log(myClosure.inc());  // 返回 2
+      console.log(myClosure.inc());  // 返回 3
+  </script> -->
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue.js!'
+      },
+      methods: {
+        say: function (msg, event) {
+          //获取点击对象      
+          var el = event.currentTarget;
+          alert("当前对象的内容：" + el.innerHTML);
+        },
+        fn: function (msg, event) {
+          var el = event.currentTarget;
+          // console.log(el);
+          setTimeout(function () {
+            // el.scrollIntoView();
+            console.log(el);
+            el.scrollIntoViewIfNeeded();
+            // document.activeElement.scrollIntoViewIfNeeded();
+          }, 100)
+        }
+      }
+    })
+
+
+    $("#hello").on('click', function () {
+      var target = this;
+      console.log(target)
+      setTimeout(function () {
+        // target.scrollIntoView(true);
+        target.scrollIntoViewIfNeeded();
+      }, 100)
+    })
+  </script>
+</body>
+
+</html>

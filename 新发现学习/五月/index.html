@@ -1,60 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
+  <title>canvas 粒子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    html,body{
-      height:100%;
-    }
-    *{
-      margin: 0;
+  <style type="text/css">
+    * {
       padding: 0;
-    }
-    iframe{
-      box-sizing: border-box;
-      padding-left: 130px;
+      margin: 0;
     }
   </style>
 </head>
+
 <body>
-
-  <iframe id="iframe" onload="changeFrameHeight();" src="http://www.baidu.com" scrolling="no" frameborder = "0" width="100%"></iframe>
-
+  <script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
   <script>
-    window.onload = function(){
-      // iframeLoad();
-    }
+    "use strict";
 
+    var myClosure = (function outerFunction() {
+      var hidden = 1;
+      return {
+        inc: function innerFunction() {
+          return hidden++;
+        }
+      }
+    }());
 
-    function changeFrameHeight(){
-        var ifm= document.getElementById("iframe"); 
-        ifm.height=document.documentElement.clientHeight;
-    }
-
-    window.onresize=function(){  
-        changeFrameHeight();  
-    } 
-
-    // var length = 10;
-
-    // function fn(){
-    //   console.log(this.length);
-    // }
-
-    // var obj = {
-    //   length:5,
-    //   method:function(a){
-    //     a();              //10
-    //     console.log(arguments[0]);  //函数
-    //     arguments[0](); //3
-    //     a.call(obj,12); //5
-    //   }
-    // }
-
-    // obj.method(fn,1,2);
+    console.log(myClosure.inc()); // 返回 1
+    console.log(myClosure.inc()); // 返回 2
+    console.log(myClosure.inc()); // 返回 3
   </script>
 </body>
+
 </html>
