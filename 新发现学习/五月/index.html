@@ -15,20 +15,14 @@
 <body>
   <script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
   <script>
-    "use strict";
-
-    var myClosure = (function outerFunction() {
-      var hidden = 1;
-      return {
-        inc: function innerFunction() {
-          return hidden++;
-        }
+    function currying(fn){
+      var slice = Array.prototype.slice;
+      _args = slice.call(arguments,1);
+      return function(){
+        var _inargs = slice.call(arguments);
+        return fn.apply(null, _args.concat(_inargs));
       }
-    }());
-
-    console.log(myClosure.inc()); // 返回 1
-    console.log(myClosure.inc()); // 返回 2
-    console.log(myClosure.inc()); // 返回 3
+    }
   </script>
 </body>
 
