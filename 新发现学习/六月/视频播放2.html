@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="play()">播放</button>
+    <script src="./flv.js"></script>
+    <video id="videoElement" width="100%" height="100%"></video>
+    <script>
+         var flvPlayer = null;
+        if (flvjs.isSupported()) {
+            var videoElement = document.getElementById('videoElement');
+             flvPlayer = flvjs.createPlayer({
+                type: 'mp4',
+                url: 'http://resource.apicloud.com/video/apicloud3.mp4'
+            });
+            flvPlayer.attachMediaElement(videoElement);
+            flvPlayer.load();
+            
+        }
+
+        function play(){
+            flvPlayer.play();
+        }
+    </script>
+</body>
+
+</html>

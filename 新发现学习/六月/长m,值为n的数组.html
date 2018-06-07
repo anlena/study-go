@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function initArray(m,n){
+            var arr = [];
+            function arrPush(m,n){
+                if(arr.length === m) return arr;
+                arr.push(n);
+                return arrPush(m,n);
+            }
+            return (arrPush(m,n));
+        }
+
+        console.log(initArray(3,4));
+    </script>
+</body>
+
+</html>
