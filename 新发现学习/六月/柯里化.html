@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var currying = function (fn) {
+            var args = [].slice.call(arguments, 1);
+            return function () {
+                var newArgs = [].slice.call(arguments).concat(args);
+                console.log(newArgs);
+                return fn.apply(null, newArgs);
+            };
+        };
+
+        var myURL2 = currying(simpleURL, 'https', 'www.jackzxl.net');
+        console.log(myURL2('myfile.js'))
+
+        function simpleURL(path) {
+            return "http://www.jackzxl.net/" + path;
+        }
+    </script>
+</body>
+
+</html>
