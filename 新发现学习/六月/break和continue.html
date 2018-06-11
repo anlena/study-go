@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        var k1 = 0;
+        startFor:
+            for (i = 0; i < 10; i++) {
+                for (l = 0; l < 10; l++) {
+                    if (l == 5) {
+                        break;
+                    }
+                    k1++;
+                }
+            }
+        console.log("case1 break当前循环：" + k1); //50
+        var k2 = 0;
+        startFor:
+            for (i = 0; i < 10; i++) {
+                for (l = 0; l < 10; l++) {
+                    if (l == 5) {
+                        break startFor;
+                    }
+                    k2++;
+                }
+            }
+        console.log("case2 break外面循环：" + k2); //5
+        var k3 = 0;
+        startFor:
+            for (i = 0; i < 10; i++) {
+                for (l = 0; l < 10; l++) {
+                    if (l == 5) {
+                        continue;
+                    }
+                    k3++;
+                }
+            }
+        console.log("case3 continue当前循环：" + k3); //90
+        var k4 = 0;
+        startFor:
+            for (i = 0; i < 10; i++) {
+                for (l = 0; l < 10; l++) {
+                    if (l == 5) {
+                        continue startFor;
+                    }
+                    k4++;
+                }
+            }
+        console.log("case4 continue外面循环：" + k4); //50
+    </script>
+</body>
+
+</html>
