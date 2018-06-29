@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    var json = {
+        "code-0":"1-1",
+        "type-0":"1-2",
+        "name-0":"1-3",
+        "rate-0":"1-4",
+        "code-1":"2-1",
+        "type-1":"2-2",
+        "name-1":"2-3",
+        "rate-1":"3-4",
+        "code-3":"3-1",
+        "type-3":"3-2",
+        "name-3":"3-3",
+        "rate-3":"3-4",
+        "code-4":"4-1",
+        "type-4":"4-2",
+        "name-4":"4-3",
+        "rate-4":"4-4",
+    }
+
+    var json1 = [
+        {code:'1-1',type:'1-2',name:'1-3',rate:'1-4'},
+        {code:'1-1',type:'1-2',name:'1-3',rate:'1-4'},
+        {code:'1-1',type:'1-2',name:'1-3',rate:'1-4'},
+        {code:'1-1',type:'1-2',name:'1-3',rate:'1-4'}
+    ]
+
+    var json2 = [];
+
+    for (const key in json) {
+        if (object.hasOwnProperty(key)) {
+            const element = object[key];
+            var son = {};
+            var num = element.indexOf("-");
+            son[key.splice(0,num)] = element
+        }
+    }
+</script>
+</body>
+</html>
