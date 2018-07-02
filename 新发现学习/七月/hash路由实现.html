@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <a href="#">home</a>
+        <a href="#/book">book</a>
+        <a href="#/movie">movie</a>
+
+        <div id="content"></div>
+    </div>
+</body>
+<script>
+    class Router {
+        constructor(options) {
+            this.routers = {};
+
+            this.init();
+
+            //遍历,绑定视图更新
+            options.forEach(item => {
+                this.route(item.path, () => {
+                    document.getElementById('content').innerHTML = item.component;
+                })
+            });
+        }
+
+        //绑定监听事件
+        init() {
+            window.addEventListener('load', this.updatedView.bind(this), false);
+            window.addEventListener('popstate', this.updatedView.bind(this), false);
+        }
+
+        //更新视图
+        updatedView() {
+            const currentUrl = window.location.pathname || '/';
+            this.routes[currentUrl] && this.routes[currentUrl]();
+        }
+
+        //将路由与回调函数关联
+        route(path, cb) {
+            this.routes[path] = cb;
+        }
+    }
+
+    const router = new Router([{
+            path: '/',
+            component: 'home'
+        },
+        {
+            path: '/book',
+            component: 'book'
+        },
+        {
+            path: '/movie',
+            component: 'movie'
+        }
+    ]);
+</script>
+
+</html>
