@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
-    
-    <script>
-        var arr = [1,2,3,4,5,6,7,8,8,9];
-        for(let i = 0;item;item = arr[i++]){
-            console.log(item);
-        }
 
-        for(var i = 0;i < arr.length;i++){
-            console.log(arr[i]);
-        }
-    </script>
+<body>
+
+<script>
+    function Foo(){
+        return this;
+    }
+    Foo.getName = function(){
+        console.log(1);
+    }
+    Foo.prototype.getName = function(){
+        console.log(2);
+    }
+
+    new Foo.getName();
+    new Foo().getName();
+    
+    var food = new Foo();
+
+    food.getName();
+</script>
 </body>
+
 </html>
