@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <h1>倒计时插件</h1>
+    <div id="simply-countdown-losange"></div>
+
+    <!-- <script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script> -->
+    <!-- <script src="./main.js"></script> -->
+    <script>
+        var d = new Date(new Date("2011/11/11 20:10:10").getTime());
+
+        // default example
+        // simplyCountdown('.simply-countdown-one', {
+        //     year: d.getFullYear(),
+        //     month: d.getMonth() + 1,
+        //     day: d.getDate()
+        // });
+
+        // //jQuery example
+        // $('#simply-countdown-losange').simplyCountdown({
+        //     year: d.getFullYear(),
+        //     month: d.getMonth() + 1,
+        //     day: d.getDate(),
+        //     enableUtc: false
+        // });
+
+        var date = new Date();
+        alert(new Date(date.getTime()).getUTCDate())
+    </script>
+</body>
+
+</html>
