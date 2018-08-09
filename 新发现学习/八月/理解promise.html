@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //原生js实现一个简单的ajax
+
+    //简单实现，为实现兼容处理
+    // var url = '<url>';
+    // var result;
+
+    // var XHR = new XMLHttpRequest();
+    // XHR.open('GET',url,true);
+    // XHR.send();
+
+    // XHR.onreadystatechange = function(){
+    //     if(XHR.readyState == 4 && XHR.status == 200){
+    //         result = XHR.response;
+    //         console.log(result);
+    //     }
+    // }
+
+    //多个有先后顺序的ajax，得层层嵌套
+
+
+    // function fn() {
+    //     console.log('fn do!');
+    // }
+
+    // function fn1(fn) {
+    //     console.log('do 1!');
+    //     fn && setTimeout(fn, 0);
+    // }
+
+    // function fn2(fn) {
+    //     console.log('do 2!');
+    //     fn && setTimeout(fn, 0);
+    // }
+
+    // function fn3(fn) {
+    //     console.log('do 3!');
+    //     fn && setTimeout(fn, 0);
+    // }
+    // fn1(fn2(fn3(fn)));
+
+
+    // function fn() {
+    //     console.log('fn do!');
+    // }
+
+    // function fn1(fn) {
+    //     console.log('do 1!');
+    //     return new Promise(function (resolve, reject) {
+    //         if (typeof fn == 'function') resolve(fn);
+    //         else reject("TypeError:" + fn + "no a function");
+    //     });
+    // }
+
+    // function fn2(fn) {
+    //     console.log('do 2!');
+    //     return new Promise(function (resolve, reject) {
+    //         if (typeof fn == 'function') resolve(fn);
+    //         else reject("TypeError:" + fn + "no a function.");
+    //     });
+    // }
+
+    // function fn3(fn) {
+    //     console.log('do 3!');
+    //     return new Promise(function (resolve, reject) {
+    //         if (typeof fn == 'function') resolve(fn);
+    //         else reject("TypeError:" + fn + "no a function.");
+    //     });
+    // }
+
+    // fn1(fn)
+    // .then(function(fn){
+    //     return fn2(fn);
+    // }).then(function(fn){
+    //     return fn3(fn);
+    // }).then(function(fn){
+    //     fn();
+    // })
+
+
+
+
+    // new Promise((resolve,reject) => {
+    //     if(true){
+    //         resolve();
+    //     }else{
+    //         reject();
+    //     }
+    // }).then(() => {
+    //     console.log("then 1");
+    // }).then(() => {
+    //     console.log('then 2');
+    // });
+
+    // new Promise((resolve,reject) => {})
+    //     .then(() => {},() => {})
+    //     .then(() => {},() => {})
+
+    // new Promise((resolve,reject) => {})
+    //     .then(() => {}) //成功的
+    //     .catch(() => {})    //失败的
+    //     .then(() => {})
+    //     .catch(() => {})
+
+
+
+
+    //全部执行完,再执行
+    // const p1 = new Promise((resolve, reject) => {});
+    // const p2 = new Promise((resolve, reject) => {})
+    // const p3 = new Promise((resolve, reject) => {})
+    // Promise.all([p1, p2, p3]).then(() => {
+    //     console.log('run promise all callback!')
+    // });
+
+    //只要有一个执行完
+    // Promise.race([p1, p2, p3]).then(() => {
+    //     console.log('run Promise all callback!');
+    // })
+
+
+    // new Promise(function (resolve, reject) {
+    //     if (true) resolve('resolve 0');
+    //     else reject('reject 0');
+    // }).then(function (data) {
+    //     console.log(data);
+    //     return "resolve 1";
+    // }, function (data) {
+    //     console.log(data);
+    //     return "reject 1";
+    // }).then(function (data) {
+    //     console.log(data);
+    //     return "resolve 2";
+    // }, function (data) {
+    //     console.log(data);
+    //     return "reject 2";
+    // }).then(function (data) {
+    //     console.log(data);
+    //     return "resolve 3";
+    // }, function (data) {
+    //     console.log(data);
+    //     return "reject 3";
+    // }).then(function (data) {
+    //     console.log(data);
+    // }, function (data) {
+    //     console.log(data);
+    // });
+
+    // 打印的结果为：
+    // resolve 0
+    // resolve 1
+    // resolve 2
+    // resolve 3
+
+
+
+    //应用promise封装ajax
+    function ajax(url,type){
+        return new Promise((resolve,reject) => {
+            var XHR = new XMLHttpRequestUpload();
+            XHR.open(type,url,true);
+            XHR.send();
+            XHR.onreadystatechange = () => {
+                if(XHR.readyState == 4){
+                    if(XHR.status == 200){
+                        try {
+                            let response = JSON.parse(XHR.responseText);
+                            resolve(response);
+                        }catch(e){
+                            reject(e);
+                        }
+                    }
+                }else{
+                    reject(new Error(XHR.statusText));
+                }
+            }
+        })
+    }
+</script>
+
+</html>

@@ -6,15 +6,19 @@
    3. promise
    4. Generator 
    5. async和await
-   6. class和设计模式(常用)
-   7. 数组降维
-   8.  Map、FlatMap 和 Reduce
+   6. Proxy
+   7. class和设计模式(常用)
+   8. 数组降维
+   9.  Map、FlatMap 和 Reduce
 3. 框架方面
 4. 
 
 
 
+需要复习的基础知识
 
+* [关于数组](https://juejin.im/post/5b684ef9e51d451964629ba1)
+* 
 
 小知识点：
 
