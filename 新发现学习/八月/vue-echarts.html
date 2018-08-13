@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>v-charts</title>
+</head>
+
+<body>
+    <div id="app">
+        <span>当前选中了: {{ cityName || '-' }}</span>
+        <ve-map :data="chartData" :settings="chartSettings" :extend="chartExtend" :events="chartEvents"></ve-map>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-charts/lib/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-charts/lib/style.min.css">
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                this.chartEvents = {
+                    click: (v) => {
+                        console.log(1)
+                        let nameMap = this.chartExtend.series.nameMap;
+                        console.log(v.name)
+                        for (const key in nameMap) {
+                            console.log(nameMap[key] == v.name)
+                            if (nameMap[key] == v.name) {
+                                this.position = 'province/' + key;
+                            }
+                        }
+                        this.cityName = v.name
+                    }
+                }
+                this.chartExtend = {
+                    series: {
+                        nameMap: {
+                            'xizang': '西藏',
+                        }
+                    }
+                }
+                return {
+                    condition: true,
+                    position: 'china',
+                    cityName: '',
+                    positionJsonLink: 'https://unpkg.com/echarts@3.6.2/map/json/china.json',
+                    chartData: {
+                        columns: ['位置', 'GDP'],
+                        rows: [{
+                                '位置': '吉林',
+                                'GDP': 123
+                            },
+                            {
+                                '位置': '北京',
+                                'GDP': 1223
+                            },
+                            {
+                                '位置': '上海',
+                                'GDP': 2123
+                            },
+                            {
+                                '位置': '浙江',
+                                'GDP': 4123
+                            },{
+                                '位置': '西藏',
+                                'GDP': 4123
+                            }
+                        ]
+                    }
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+                chartSettings() {
+                    let result = {
+                        beforeRegistterMap: (json) => {
+                            console.log(111)
+                            if (this.condition) {
+                                return json;
+                            } else {
+                                'sx'
+                            }
+                        },
+                        position: this.position,
+                        selectedMode: 'single',
+                    }
+
+                    console.log(result.beforeRegistterMap(132))
+                    console.log(result.position);
+                    return result;
+                },
+                search(namemap,name){
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
