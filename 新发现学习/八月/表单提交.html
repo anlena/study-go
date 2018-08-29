@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="firstform" action="" method="post" onsubmit="return saveReport();">
+        <input type="file" name="img"/>
+        <input type="text" name="username"/>
+        <input type="button" value="提" onclick="test();"/>
+    </form>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</body>
+<script>
+    //ajax获取提交数据
+
+    // function postMesg(){
+    //     //ajax
+    //     $.post(url,{
+    //         data:{
+    //             name:'admin',
+    //             age:12
+    //         },function(data) {
+
+    //         }
+    //     },"json");
+
+    //     $.ajax({
+    //         url:"${pageContext.request.contextPath}/public/testupload",
+    //         type:"post",
+    //         data:{username:"user"},
+    //         success:function(data){
+    //             console.log("成功")
+    //         },
+    //         error:function(err){
+    //             alert("错误")
+    //         }
+    //     })
+    // }
+
+
+    //jq绑定form提交不跳转
+
+    // function saveReport() { 
+    //      // jquery 表单提交 
+    //     $("#showDataForm").ajaxSubmit(function(message) { 
+    //         // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容 
+    //     }); 
+    //     return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转 
+    // }
+
+
+    //使用FormData对象(H5仅有，不支持ie8什么的)
+
+    //自己往里面填数据
+    // var form = new FormData();
+    // form.append("username", "zxj");
+    // form.append("password", 123456);
+    //jq
+    // $.ajax({
+    //     url: "${pageContext.request.contextPath}/public/testupload",
+    //     type: "post",
+    //     data: form,
+    //     processData: false,
+    //     contentType: false,
+    //     success: function (data) {
+    //         window.clearInterval(timer);
+    //         console.log("over..");
+    //     }
+    // })
+
+    // //或者直接提交
+    // var req = new XMLHttpRequest();
+    // req.open("opst", "${pageContext.request.contextPath}/public/testupload", false);
+    // req.send(form);
+
+
+    //从页面获取数据
+    function test(){
+        var form = new FormData(document.querySelector("#firstform"));
+        alert(JSON.parse(form))
+        //然后发送数据
+    }
+</script>
+
+</html>
