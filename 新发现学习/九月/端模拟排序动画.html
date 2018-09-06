@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>排序动画演示</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .container {
+            height: 100%;
+            text-align: center;
+        }
+
+        .sort {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid black;
+            transition: 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+</body>
+<script>
+    var arr = [6,5,4,3,2,1];
+    var container = document.querySelector('.container');
+    var fragment = document.createDocumentFragment(); //创建文档片段，尽量减少重绘和重排
+    var len = arr.length;
+    for (var i = 0; i < len; i++) {
+        var node = document.createElement("div");
+        node.className = "sort";
+        node.innerText = arr[i];
+        node.id = i; //这个后面移动位置的时候需要用到
+        node.style.left = i * 60 + 'px';
+        fragment.append(node);
+    }
+    container.append(fragment);
+
+    //冒泡排序
+    function sort(len) {
+        var time = 1;
+        for (let i = 0; i < len; i++) {
+            for (let j = 0; j < len - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // 这里使用了ES6的解构赋值，即交换两个元素的值
+                    // [arr[j],arr[j+1]] = [arr[j+1],arr[j]];
+                    // 也可以这样
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+
+                    setTimeout(function () {
+                        var x = document.getElementById(j);
+                        var y = document.getElementById(j + 1);
+                        // 这里同样采用解构赋值
+                        // [x.style.left,y.style.left] = [y.style.left,x.style.left];
+                        // [x.id,y.id] = [y.id,x.id];
+
+                        // 也可以这样
+                        var s = x.style.left,
+                            q = x.id;
+                        x.style.left = y.style.left;
+                        y.style.left = s;
+                        x.id = y.id;
+                        y.id = q;
+                    },time*1000)
+                    time++;
+                }
+            }
+        }
+    }
+
+    sort(len);
+</script>
+
+</html>
