@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 1.Generator 基本使用
+    // function* say() {
+    //     let a = yield 1 // 第一个it.next()时返回
+    //     let b = yield 2 // 第二个it.next()时返回
+    //     let c = yield 3 // 第三个it.next()时返回
+    //     return 'end' // 第四个it.next()时返回
+    // }
+
+    // let it = say()
+    // let obj1 = it.next()
+    // console.log(obj1) // { value: 1, done: false }
+    // let obj2 = it.next()
+    // console.log(obj2) // { value: 2, done: false }
+    // let obj3 = it.next()
+    // console.log(obj3) // { value: 3, done: false }
+    // let obj4 = it.next()
+    // console.log(obj4) // { value: 'end', done: true }
+
+
+    // 迭代方式
+    // let it = say();
+
+    // function next() {
+    //     let {value,done} = it.next()
+    //     console.log(value) // 依次打印输出 1 2 3 end
+    //     if (!done) next() // 直到迭代完成
+    // }
+    // next()
+
+
+
+    // 2.怎么往generator里面放东西
+
+    // function* say () {  
+    //     let a = yield 'hello swr1'
+    //     console.log(a)
+    //     let b = yield 'hello swr2'
+    //     console.log(b)
+    // }
+
+    // let it = say(); //返回迭代器
+    // console.log(it.next());
+    // console.log(it.next('我是被传进来的1'));
+    // console.log(it.next('我是被传进来的2'));
+    // console.log(it.next('我是被传进来的3'));
+
+
+
+    // 3.generator和Promise、co配合使用
+        // 通用promise
+    
+    // let fs = require('fs');
+    // // promise化函数
+    // function promisify(fn){
+    //     return function(...args){
+    //         return new Promise((resolve,reject) => {
+    //             fn(...args,(err,data) => {
+    //                 if(err) reject(err);
+    //                 resolve(data);
+    //             })
+    //         })
+    //     }
+    // }
+
+    // // 把fs.readFile函数promise化
+    // let read = promisify(fs.readFile);
+
+    // read('1.txt','utf8').then((data) => {
+    //     console.log(data);
+    // })
+
+
+
+    //4.generator和go
+    //本处代码promisify源用上面的函数promisify
+    //本处代码read源用上面的函数read
+
+    // let co = require('co');
+    // function* r(){
+    //     let r1 = yield read('1.txt','utf8')
+    //     let r2 = yield read(r1,'utf8')
+    //     let r3 = yield read(r2,'utf8')
+    //     return r3
+    // }
+
+    // // 此时想得到r3的值
+    // let it = r();
+    // let {value,done} = it.next();   //value为一个promise对象
+    //                                 //该对象会把resolve的值传给一个then
+    // value.then((data) => {
+    //     let {value,done} = it.next()
+    //     return value
+    // }).then((data)=>{ // data值为'3.txt'
+    //     let { value,done } = it.next(data)
+    //     return value
+    // }).then((data)=>{ // data值为'hello swr'
+    //     console.log(data) // 打印输出 'hello swr'
+    // })
+    // // 这样的写法，反而显得很繁琐复杂了，那么我们下面看下使用generator+co是怎么使用的
+
+
+    // // 方法二:
+    // co(r()).then(data => {
+    //     console.log(data);
+    // });
+
+    
+
+    //5. 自己实现一个co
+    // function co(it){
+    //     return new Promise((resolve,reject) => {
+    //         function next(data){
+    //             let {value,done} = it.next(data)
+    //             if(!done){
+    //                 value.then((data) => {
+    //                     next(data)
+    //                 },reject)
+    //             }else{
+    //                 resolve(value)
+    //             }
+    //         }
+    //         next()
+    //     })
+    // }
+
+
+    // 6.当有两个gennerator函数时，并且其中一个嵌套另外一个
+    // function* a(){
+    //     yield 1
+    // }
+
+    // function* b(){
+    //     yield *a()
+    //     yield 2
+    // }
+
+    // let it = b();
+    // console.log(it.next());
+
+
+    // 7.async await
+    async function r() {  
+        try{
+            let r1 = await read('1.txt','utf8')
+            let r2 = await read(r1,'utf8')
+            let r3 = await read(r2,'utf8')
+            return r3
+        }catch(e){
+            console.log(e);
+        }
+    }
+
+    r().then((data) => {
+        console.log(data);  //hello swr
+    })
+
+</script>
+
+</html>
