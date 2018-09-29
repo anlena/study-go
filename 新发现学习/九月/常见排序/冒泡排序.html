@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>    
+//冒泡排序：比较两个相邻的项，如果一个大于第二个则交换他们的位置，元素项向上移动至正确的顺序，就好像气泡往上冒一样
+
+function bubbleSort(arr){
+    let len = arr.length;
+    for(let i = 0;i < len - 1;i++){
+        for(let j = 0;j < len - 1 - i;j++){
+            if(arr[j] > arr[j+1]){  //相邻元素两两对比
+                // var swap = arr[j];
+                // arr[j] = arr[j + 1];
+                // arr[j + 1] = swap;
+                [arr[j],arr[j + 1]] = [arr[j + 1],arr[j]];
+            }
+        }
+    }
+    return arr;
+}
+
+
+var a = bubbleSort([3,2,4,1,2,0,3]);
+console.log(a);
+</script>
+</html>

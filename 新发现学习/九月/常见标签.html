@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // demo:(en:自定义事件名称，fn:事件处理函数，addEvent:为DOM元素添加自定义事件,trriggerEvent:触发自定义事件)
+        window.onload = function () {
+            var demo = document.getElementById("demo");
+            demo.addEvent("test", function () {
+                console.log("handler1")
+            });
+            demo.addEvent("test", function () {
+                console.log("handler2")
+            });
+            demo.onclick = function () {
+                this.trriggerEvent("test");
+            }
+        }
+
+        Element.prototype.addEvent = function (en, fn) {
+            this.pools = this.pools || {};
+            if (en in this.pools) {
+                this.pools[en].push(fn);
+            } else {
+                this.pools[en] = [];
+                this.pools[en].push(fn);
+            }
+        }
+        Element.prototype.triggerEvent = function (en) {
+            if (en in this.pools) {
+                var fns = this.pools[en];
+                for (var i = 0, il = fns.length; i < il; i++) {
+                    fns[i]();
+                }
+            } else {
+                return;
+            }
+        }
+    </script>
+</body>
+
+</html>
