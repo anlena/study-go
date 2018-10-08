@@ -1,0 +1,42 @@
+- 谈谈变量提升？
+- bind和call的区别
+- call和apply的区别？作用?（改变this的指向）？其他改变this指向的方法
+- 简单说下原型链？
+- 怎么判断对象类型？
+- 箭头函数的特点
+- cookie和localSrorage、session的区别
+- 怎么判断页面是否加载完成？
+- jsonp解决跨域问题，回调函数怎么执行的？
+- Async、await
+- 介绍 Promise，内部实现
+- 从输入 URL 到页面加载全过程
+- TCP 3次握手
+- HTTPS 握手
+- ==和===区别，什么情况用===
+- 进程和线程区别
+- 介绍下设计模式
+- react 生命周期
+- 事件代理
+- 垃圾回收
+- React 子父怎么传值
+- React 高阶组件
+- some、every、find、filter、map、foreach区别
+- 闭包
+- fiber
+- http 头
+- generator 原理
+- 基本数据类型和引⽤类型在存储上的差别
+- vue的nextTick原理
+- vue 双向绑定
+- 路由原理
+- Eventloop
+- setTimeout 倒计时误差
+- 防抖
+- 数组降维
+- 深拷贝
+- Service worker
+- 浏览器缓存
+- 浏览器性能问题
+- MVVM
+- VDOM
+- setState
