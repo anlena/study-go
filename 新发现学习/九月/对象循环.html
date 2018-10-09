@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let obj = {
+            a: 'hello',
+            age: 12,
+            c: "hahah"
+        }
+
+        //for in 会循环prototype上的属性
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const element = obj[key];
+                console.log(element);
+            }
+        }
+
+        //Object.keys---把对象的key变成一个数组
+        const keys1 = Object.keys(obj);
+        console.log(keys1);
+
+        //Object.values---把对象的value变成一个数组
+        const value1 = Object.values(obj);
+        console.log(value1);
+
+        //Object.entries--把对象生成一个二维数组，每个数组对应key和value
+        const datas = Object.entries(obj);
+        console.log(datas);
+
+        //
+    </script>
+</body>
+
+</html>

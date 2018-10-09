@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // filter--根据数组元素是否通过特定条件测试来创建新数组
+    const studentsAge = [17,23,12,23,4,3];
+    const ableToDrink = studentsAge.filter(age => age < 10);
+
+    //map--通过操作一个数组中的值来创建一个新数组。这个方法非常适合数据操作，它经常用于React,因为它是一种不可变的方法
+    const numbers = [2,3,4,5];
+    const dollars = numbers.map(number => '$' + number);
+
+    //reduce--使用一个累加器，将数组中的所有元素减少为单个值。非常适合计算总数。返回的值可以是任何类型(即对象、数组、字符串、整数))
+    const number1 = [5,10,20];
+    const total = number1.reduce((accumulator,currentvalue) => {
+        accumulator + currentvalue;
+    });
+
+    //forEach--在数组中的每个元素项上应用一个函数
+    const emotions = ['happy','sad','angry'];
+    emotions.forEach(emotion => console.log(emotion));
+
+    //some--检查数组中的任何元素是否通过该条件
+    const userPrivileges = ['user','user','user','admin'];
+    const containsAdmin = userPrivileges.some(element => element === "amdin");
+
+    //every--检查数组中的所有项是否通过条件
+    const ratings = [3,5,3,2,1];
+    const goodOverallReting = ratings.every(rating => rating >= 3);
+
+    //includes--检查数组是否包含某个值。
+    const names = ['sophie','georg','valdo','stehole','henry'];
+    const incluedsWaldo = names.includes("valdo");
+
+    //Array.from()--基于另一个数组或字符串创建数组的静态方法
+    const newArray = Array.from('hello');
+    //newAraay 将等于 ['h','e','l','l','o']
+
+    //Object.values()--Object.keys()--Object.entries()
+
+    //数组展开
+    //使用展开运算符（...）展开数组，允许你展开数组中的元素。将一堆数组连接在一起时非常有用。
+    //当数组中删除某些元素时，避免使用 splice() 方法也是一种好方法，因为它可以与slice()方法结合使用，以防止数组的直接突变。
+    const spreadableOne = [1,2,3,4];
+    const spreadableTwo = [5,6,7,8];
+    const combined = [...spreadableOne,...spreadableTwo];
+    //删除一个数组元素而不改变原始数组
+    const animals = ['squirrel', 'bear', 'deer', 'salmon', 'rat'];
+    const mamals = [...animals.slice(0,3),...animals.slice(4)];
+    // mammals 将等于 ['squirrel', 'bear', 'deer', 'rat']
+
+
+    //对象展开
+    //展开一个对象，允许向一个对象添加新的属性和值，而不突变(比如创建一个新对象)，也可以将多个对象组合在一起。应该注意的是，展开对象不会进行嵌套复制
+    const spreadableObject = {
+        name:"Robert",
+        phone:'iphone'
+    }
+
+    const newObject = {
+        ...spreadableObject,
+        carModel:'Volkswagen'
+    }
+    // newObject 将等于
+    // { carModel: 'Volkswagen', name: 'Robert', phone: 'iPhone' }
+
+    
+    //剩余参数
+    //函数可以使用 rest（剩余）参数语法接受任意数量的参数作为数组。
+    function displayArgumentsArray(...theArguments) {
+        console.log(theArguments);
+    }
+    displayArgumentsArray('hi', 'there', 'bud');
+    // 将打印 ['hi', 'there', 'bud']
+
+
+    //Object.freeze()--防止你修改现有的对象属性或向对象添加新的属性和值。
+    //冻结对象以防止更改name属性
+    const frozenObject = {
+        name:'Robert'
+    }
+    Object.freeze(frozenObject);
+    frozenObject.name = "1234";
+    // frozenObject 将等于 { name: 'Robert' }
+
+
+    //Object.seal()--拒绝将任何新属性添加到对象，但允许更改现有属性
+    //封闭一个对象，以防止添加 wearsWatch 属性。
+    const sealedObject = {
+        name: 'Robert'
+    }
+    Object.seal(sealedObject);
+    sealedObject.name = 'Bob';
+    sealedObject.wearsWatch = true;
+    // sealedObject 将等于 { name: 'Bob' }
+
+
+    //Object.assign()--允许对象组合在一起。不再需要这个方法，因为您可以使用上面说的对象展开语法。与对象展开操作符一样，Object.assign() 也不会执行深层克隆。当谈到深度克隆对象时，Lodash 是你最好的朋友。
+    const firstObject = {
+        firstName: 'Robert'
+    }
+    const secondObject = {
+        lastName: 'Cooper'
+    }
+    const combinedObject = Object.assign(firstObject, secondObject);
+    // combinedObject 将等于 { firstName: 'Robert', lastName: 'Cooper' }
+
+</script>
+</html>
